@@ -2,22 +2,34 @@
 const form = document.getElementById("weather-form");
 const cityInput = document.getElementById("city");
 
-// Listen for form submit
-form.addEventListener("submit", function (event) {
+// Replace with your API Key
+const API_KEY = "1cdd85d183cd78fda3710a393fb6e45f";
 
-    // Prevent page refresh
+form.addEventListener("submit", async function (event) {
+
     event.preventDefault();
 
-    // Get input value
     const city = cityInput.value.trim();
 
-    // Check if input is empty
     if (city === "") {
         alert("Please enter a city name.");
         return;
     }
 
-    // Print city name in console
-    console.log("City:", city);
+    try {
+
+        const response = await fetch(
+            `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`
+        );
+
+        const data = await response.json();
+
+        console.log(data);
+
+    } catch (error) {
+
+        console.log("Error:", error);
+
+    }
 
 });
