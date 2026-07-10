@@ -6,6 +6,7 @@ const cityInput = document.getElementById("city");
 const output = document.getElementById("output");
 const locationBtn = document.getElementById("location-btn");
 const historyList = document.getElementById("history-list");
+const clearHistoryBtn = document.getElementById("clear-history-btn");
 
 // OpenWeather API Key
 const API_KEY = "1cdd85d183cd78fda3710a393fb6e45f";
@@ -31,6 +32,15 @@ function showHistory() {
     historyList.innerHTML = "";
 
     const history = JSON.parse(localStorage.getItem("history")) || [];
+
+    if (history.length === 0) {
+
+        historyList.innerHTML = `
+            <li>No recent searches</li>
+        `;
+
+        return;
+    }
 
     history.forEach(city => {
 
@@ -172,3 +182,10 @@ locationBtn.addEventListener("click", function () {
 
 });
 showHistory();
+clearHistoryBtn.addEventListener("click", function () {
+
+    localStorage.removeItem("history");
+
+    showHistory();
+
+});
