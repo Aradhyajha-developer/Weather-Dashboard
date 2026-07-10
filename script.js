@@ -24,7 +24,12 @@ form.addEventListener("submit", async function (event) {
     }
 
     // Loading message
-    output.innerHTML = "<p>Loading weather...</p>";
+    
+    output.innerHTML=`
+<div class="loading">
+⏳ Loading Weather...
+</div>
+`;
 
     try {
 
@@ -59,10 +64,16 @@ form.addEventListener("submit", async function (event) {
     } catch (error) {
 
         output.innerHTML = `
-            <p style="color:red;">
-                ${error.message}
-            </p>
-        `;
+    <div class="error-box">
+
+        <h3>❌ Oops!</h3>
+
+        <p>${error.message}</p>
+
+        <small>Please check the city name and try again.</small>
+
+    </div>
+`;
 
         console.log(error);
 
