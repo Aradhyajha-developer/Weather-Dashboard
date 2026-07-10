@@ -5,10 +5,42 @@ const form = document.getElementById("weather-form");
 const cityInput = document.getElementById("city");
 const output = document.getElementById("output");
 const locationBtn = document.getElementById("location-btn");
+const historyList = document.getElementById("history-list");
 
 // OpenWeather API Key
 const API_KEY = "1cdd85d183cd78fda3710a393fb6e45f";
 
+
+function saveSearch(city) {
+
+    let history = JSON.parse(localStorage.getItem("history")) || [];
+
+    if (!history.includes(city)) {
+        history.unshift(city);
+    }
+
+    history = history.slice(0, 5);
+
+    localStorage.setItem("history", JSON.stringify(history));
+
+    showHistory();
+}
+
+function showHistory() {
+
+    historyList.innerHTML = "";
+
+    const history = JSON.parse(localStorage.getItem("history")) || [];
+
+    history.forEach(city => {
+
+        historyList.innerHTML += `
+            <li>${city}</li>
+        `;
+
+    });
+
+}
 // Function to display weather
 function displayWeather(data) {
     output.innerHTML = `
@@ -58,6 +90,7 @@ form.addEventListener("submit", async function (event) {
         const data = await response.json();
 
         displayWeather(data);
+        saveSearch(data.name);
 
     } catch (error) {
 
@@ -109,6 +142,7 @@ locationBtn.addEventListener("click", function () {
                 const data = await response.json();
 
                 displayWeather(data);
+                saveSearch(data.name);
 
             } catch (error) {
 
@@ -137,3 +171,4 @@ locationBtn.addEventListener("click", function () {
     );
 
 });
+showHistory();
