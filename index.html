@@ -2,43 +2,78 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+          content="Professional Weather Dashboard using HTML, CSS and JavaScript">
+
+    <meta name="author"
+          content="Aradhya Jha">
+
     <title>Weather Dashboard</title>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="style.css">
-
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-        rel="stylesheet">
 
-    <!-- Font Awesome Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+    <!-- Font Awesome -->
+
     <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet"
+          href="style.css">
+
 </head>
 
 <body>
 
-    <div class="app">
+<div class="app">
 
-        <!-- ================= HEADER ================= -->
+    <!-- ================= HEADER ================= -->
 
-        <header class="header">
+    <header class="header">
 
-            <div class="logo">
+        <div class="logo">
 
-                <i class="fa-solid fa-cloud-sun"></i>
+            <i class="fa-solid fa-cloud-sun"></i>
+
+            <div>
 
                 <h1>Weather Dashboard</h1>
 
+                <span>Real Time Weather Forecast</span>
+
             </div>
+
+        </div>
+
+        <div class="header-right">
 
             <div class="date-time">
 
-                <p id="current-date"></p>
+                <p>
 
-                <p id="current-time"></p>
+                    <i class="fa-regular fa-calendar"></i>
+
+                    <span id="current-date"></span>
+
+                </p>
+
+                <p>
+
+                    <i class="fa-regular fa-clock"></i>
+
+                    <span id="current-time"></span>
+
+                </p>
 
             </div>
 
@@ -48,128 +83,185 @@
 
             </button>
 
-        </header>
+        </div>
 
+    </header>
 
+    <!-- ================= SEARCH ================= -->
 
-        <!-- ================= MAIN CONTENT ================= -->
+    <section class="search-section">
 
-        <main class="dashboard">
+        <form id="weather-form">
 
-            <!-- LEFT SIDEBAR -->
+            <div class="search-box">
 
-            <aside class="sidebar">
+                <i class="fa-solid fa-magnifying-glass"></i>
 
-                <div class="search-card">
+                <input
+                    type="text"
+                    id="city"
+                    placeholder="Search city..."
+                    autocomplete="off"
+                    spellcheck="false"
+                    required>
 
-                    <h2>Search Weather</h2>
+            </div>
 
-                    <form id="weather-form">
+            <button type="submit">
 
-                        <input
-                            type="text"
-                            id="city"
-                            placeholder="Enter city name..."
-                        >
+                Search
 
-                        <button type="submit">
+            </button>
 
-                            <i class="fa-solid fa-magnifying-glass"></i>
+        </form>
 
-                            Search
+        <button id="location-btn">
 
-                        </button>
+            <i class="fa-solid fa-location-crosshairs"></i>
 
-                    </form>
+            Current Location
 
-                    <div class="divider">
+        </button>
 
-                        <span>OR</span>
+    </section>
+
+    <!-- ================= WEATHER HERO ================= -->
+
+    <main>
+
+        <div id="output">
+
+            <section class="weather-card">
+
+                <div class="weather-top">
+
+                    <div class="weather-icon">
+
+                        <img
+                            id="weather-icon"
+                            src=""
+                            alt="Weather">
 
                     </div>
 
-                    <button id="location-btn">
+                    <div class="weather-main">
 
-                        <i class="fa-solid fa-location-dot"></i>
+                        <h2 id="city-name">
 
-                        Use Current Location
+                            Delhi
 
-                    </button>
+                        </h2>
+
+                        <p id="weather-condition">
+
+                            Clear Sky
+
+                        </p>
+
+                        <h1 id="temperature">
+
+                            34°C
+
+                        </h1>
+
+                        <p id="feels-like">
+
+                            Feels Like 36°C
+
+                        </p>
+
+                    </div>
 
                 </div>
 
+                <div class="high-low">
 
+                    <div>
 
-                <!-- Recent Searches -->
+                        <span>High</span>
 
-                <div class="history-card">
+                        <h3 id="temp-max">
 
-                    <div class="history-header">
-
-                        <h3>
-
-                            <i class="fa-solid fa-clock-rotate-left"></i>
-
-                            Recent Searches
+                            37°C
 
                         </h3>
 
                     </div>
 
-                    <div id="history-list">
-
-                        <!-- JavaScript -->
-
-                    </div>
-
-                </div>
-
-
-
-                <!-- Weather Tip -->
-
-                <div class="tip-card">
-
-                    <i class="fa-solid fa-lightbulb"></i>
-
                     <div>
 
-                        <h4>Weather Tip</h4>
+                        <span>Low</span>
 
-                        <p id="weather-tip">
+                        <h3 id="temp-min">
 
-                            Stay hydrated and enjoy your day!
+                            29°C
 
-                        </p>
+                        </h3>
 
                     </div>
 
                 </div>
+                                <!-- ================= WEATHER DETAILS ================= -->
 
-            </aside>
+                <div class="weather-details">
 
+                    <div class="detail-card">
 
+                        <i class="fa-solid fa-droplet"></i>
 
-            <!-- RIGHT CONTENT -->
+                        <h4>Humidity</h4>
 
-            <section class="weather-section">
+                        <p id="humidity">--%</p>
 
-                <div id="output">
+                    </div>
 
-                    <!-- JS will insert weather card -->
+                    <div class="detail-card">
 
-                    <div class="empty-state">
+                        <i class="fa-solid fa-wind"></i>
 
-                        <i class="fa-solid fa-cloud-sun"></i>
+                        <h4>Wind</h4>
 
-                        <h2>Welcome!</h2>
+                        <p id="wind">-- m/s</p>
 
-                        <p>
+                    </div>
 
-                            Search a city or use your current location
-                            to view the latest weather.
+                    <div class="detail-card">
 
-                        </p>
+                        <i class="fa-solid fa-eye"></i>
+
+                        <h4>Visibility</h4>
+
+                        <p id="visibility">-- km</p>
+
+                    </div>
+
+                    <div class="detail-card">
+
+                        <i class="fa-solid fa-sun"></i>
+
+                        <h4>Sunrise</h4>
+
+                        <p id="sunrise">--:--</p>
+
+                    </div>
+
+                    <div class="detail-card">
+
+                        <i class="fa-solid fa-moon"></i>
+
+                        <h4>Sunset</h4>
+
+                        <p id="sunset">--:--</p>
+
+                    </div>
+
+                    <div class="detail-card">
+
+                        <i class="fa-solid fa-gauge-high"></i>
+
+                        <h4>Pressure</h4>
+
+                        <p id="pressure">-- hPa</p>
 
                     </div>
 
@@ -177,25 +269,83 @@
 
             </section>
 
-        </main>
+            <!-- ================= 5 DAY FORECAST ================= -->
 
+            <section class="forecast-section">
 
+                <div class="section-title">
 
-        <!-- ================= FOOTER ================= -->
+                    <h2>
 
-        <footer>
+                        <i class="fa-solid fa-calendar-days"></i>
 
-            <p>
+                        5 Day Forecast
 
-                Powered by OpenWeather API • Made with ❤️ by Aradhya
+                    </h2>
 
-            </p>
+                </div>
 
-        </footer>
+                <div id="forecast-container">
 
-    </div>
+                    <!-- JavaScript -->
 
-    <script src="script.js"></script>
+                </div>
+
+            </section>
+
+            <!-- ================= RECENT SEARCHES ================= -->
+
+            <section class="history-section">
+
+                <div class="section-title">
+
+                    <h2>
+
+                        <i class="fa-solid fa-clock-rotate-left"></i>
+
+                        Recent Searches
+
+                    </h2>
+
+                </div>
+
+                <div id="history-list">
+
+                    <!-- JavaScript -->
+
+                </div>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+
+            <i class="fa-solid fa-cloud-sun-rain"></i>
+
+            Powered by OpenWeather API
+
+            &nbsp; | &nbsp;
+
+            Designed & Developed by
+
+            <strong>Aradhya Jha</strong>
+
+        </p>
+
+    </footer>
+
+</div>
+
+<!-- ================= SCRIPT ================= -->
+
+<script src="script.js"></script>
 
 </body>
 
