@@ -1,48 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
 
+    <!-- CSS -->
     <link rel="stylesheet" href="style.css">
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
+
 <body>
 
-    <div class="container">
+    <div class="app">
 
-        <h1>🌦 Weather Dashboard</h1>
+        <!-- ================= HEADER ================= -->
 
-        <form id="weather-form">
+        <header class="header">
 
-            <input
-                type="text"
-                id="city"
-                placeholder="Enter city name..."
-                required
-            >
+            <div class="logo">
 
-            <button type="submit">
-                Get Weather
+                <i class="fa-solid fa-cloud-sun"></i>
+
+                <h1>Weather Dashboard</h1>
+
+            </div>
+
+            <div class="date-time">
+
+                <p id="current-date"></p>
+
+                <p id="current-time"></p>
+
+            </div>
+
+            <button id="theme-btn">
+
+                <i class="fa-solid fa-moon"></i>
+
             </button>
 
-        </form>
-        <button id="location-btn">
-    📍 Use My Location
-</button>
+        </header>
 
-        <div id="output"></div>
-        <h3>Recent Searches</h3>
 
-<ul id="history-list"></ul>
-<button id="clear-history-btn">
-    🗑 Clear History
-</button>
 
+        <!-- ================= MAIN CONTENT ================= -->
+
+        <main class="dashboard">
+
+            <!-- LEFT SIDEBAR -->
+
+            <aside class="sidebar">
+
+                <div class="search-card">
+
+                    <h2>Search Weather</h2>
+
+                    <form id="weather-form">
+
+                        <input
+                            type="text"
+                            id="city"
+                            placeholder="Enter city name..."
+                        >
+
+                        <button type="submit">
+
+                            <i class="fa-solid fa-magnifying-glass"></i>
+
+                            Search
+
+                        </button>
+
+                    </form>
+
+                    <div class="divider">
+
+                        <span>OR</span>
+
+                    </div>
+
+                    <button id="location-btn">
+
+                        <i class="fa-solid fa-location-dot"></i>
+
+                        Use Current Location
+
+                    </button>
+
+                </div>
+
+
+
+                <!-- Recent Searches -->
+
+                <div class="history-card">
+
+                    <div class="history-header">
+
+                        <h3>
+
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+
+                            Recent Searches
+
+                        </h3>
+
+                    </div>
+
+                    <div id="history-list">
+
+                        <!-- JavaScript -->
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- Weather Tip -->
+
+                <div class="tip-card">
+
+                    <i class="fa-solid fa-lightbulb"></i>
+
+                    <div>
+
+                        <h4>Weather Tip</h4>
+
+                        <p id="weather-tip">
+
+                            Stay hydrated and enjoy your day!
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </aside>
+
+
+
+            <!-- RIGHT CONTENT -->
+
+            <section class="weather-section">
+
+                <div id="output">
+
+                    <!-- JS will insert weather card -->
+
+                    <div class="empty-state">
+
+                        <i class="fa-solid fa-cloud-sun"></i>
+
+                        <h2>Welcome!</h2>
+
+                        <p>
+
+                            Search a city or use your current location
+                            to view the latest weather.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+
+        <!-- ================= FOOTER ================= -->
+
+        <footer>
+
+            <p>
+
+                Powered by OpenWeather API • Made with ❤️ by Rashmi Singh
+
+            </p>
+
+        </footer>
 
     </div>
-    
+
     <script src="script.js"></script>
 
 </body>
+
 </html>
